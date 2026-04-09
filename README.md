@@ -1,6 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-
 # CuraConnect
 
 **A platform connecting seniors with young helpers for everyday tasks**
@@ -82,6 +79,12 @@ CuraConnect was originally built for **Jugend Gründet 2025/26**, a national ent
 This repository is the refactored version: components split from a monolithic 2,000-line file, a persistent SQLite backend added, and the Gemini integration moved server-side to eliminate API key exposure in the browser.
 
 ---
+
+## Vibe-Coded with:
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+
+
 
 ## License
 
