@@ -117,7 +117,7 @@ This repository is the refactored version: components split from a monolithic 2,
 
 ## Team
 
-**Anton Zipperle · Lena Goschmann · Teresa Schulz · Atakan Tink · Nicolas Stefanski**
+**Anton Zipperle and HelpMate**
 Hebel-Gymnasium Schwetzingen — Jugend Gründet 2026
 
 ---
