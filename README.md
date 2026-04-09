@@ -18,12 +18,6 @@
 
 ---
 
-# CuraConnect 🤝
-
-> **Hilfe verbindet Generationen** — connecting seniors who need a hand with young people looking for flexible work.
-
----
-
 ## The Idea
 
 Germany has over 5.7 million people in need of care, most of them living at home. They need help with everyday things — carrying groceries, setting up a router, mowing the lawn — but professional services are expensive and inflexible, and family isn't always around.
