@@ -1,6 +1,8 @@
 <div align="center">
-    
-![CuraConnect Logo](https://github.com/antonzipperle/CuraConnect/blob/main/CuraConnectHZ.png)  
+
+<img src="https://github.com/antonzipperle/CuraConnect/blob/main/CuraConnectHZ.png" width="600">
+
+<a></a>
     
 **A platform connecting seniors with young helpers for everyday tasks**
 
