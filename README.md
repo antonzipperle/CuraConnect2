@@ -18,146 +18,66 @@
 
 ---
 
-## The Problem
+# CuraConnect 🤝
 
-Elderly people frequently need help with everyday tasks — grocery runs, garden work, tech support — but lack a reliable way to find it. Students want to earn money and contribute to their community but have no easy channel to offer their help.
-
-CuraConnect bridges this gap: a mobile-first marketplace where seniors post tasks and verified student helpers apply.
+> **Hilfe verbindet Generationen** — connecting seniors who need a hand with young people looking for flexible work.
 
 ---
 
-## Features
+## The Idea
 
-- **Two-sided marketplace** — Seniors post tasks (Garten, Haushalt, Technik, Einkauf, Sonstiges); students browse and apply
-- **AI job creation** — Seniors describe their need by voice or text; Gemini 2.0 Flash extracts details and fills the form automatically
-- **Image recognition** — Upload a photo of the problem; AI suggests a title, category, and fair price
-- **CuraPilot chatbot** — Floating assistant that answers questions about the platform in natural language
-- **CuraCoins** — Internal reward currency; students earn coins on completion, redeemable for vouchers
-- **Gamification** — Streak system, badges, and hero levels to keep helpers engaged
-- **Persistent data** — Full SQLite backend; jobs, users, and ratings survive page refresh
-- **Secure AI proxy** — Gemini API key never reaches the browser; all AI calls route through Express
-- **Onboarding flow** — Role-specific setup for both seniors and students after registration
+Germany has over 5.7 million people in need of care, most of them living at home. They need help with everyday things — carrying groceries, setting up a router, mowing the lawn — but professional services are expensive and inflexible, and family isn't always around.
+
+At the same time, millions of students and young people want to earn money on their own schedule, without committing to fixed shifts or long-term contracts.
+
+CuraConnect bridges the gap. Seniors post small tasks. Young people nearby apply, show up, and get paid. Simple, local, human.
 
 ---
 
-## Architecture
+## Background
 
-```
-curaconnect/
-├── src/
-│   ├── App.tsx                  # Root orchestrator: state, handlers, view routing
-│   ├── api.ts                   # HTTP client: all fetch() calls in one place
-│   ├── types/index.ts           # Shared TypeScript interfaces
-│   └── components/
-│       ├── LandingView.tsx
-│       ├── AuthViews.tsx        # Login + Register
-│       ├── SeniorDashboard.tsx  # Job creation, applicant management
-│       ├── ProfileModal.tsx
-│       ├── RatingModal.tsx
-│       ├── CuraPilot.tsx        # Floating AI chat widget
-│       ├── CuraConnectLogo.tsx
-│       └── Onboarding.tsx
-├── server/
-│   └── index.ts                 # Express: REST API + SQLite + Gemini proxy
-└── curaconnect.db               # SQLite database (auto-created on first run)
-```
+CuraConnect was developed for **Jugend Gründet 2026**, one of Germany's largest student entrepreneurship competitions (~1,500 teams). The business plan scored **1,549 / 2,000 points**, placing the team in the top tier of the first phase.
 
-**Frontend:** React 19 + TypeScript + Vite + Tailwind CSS v4
+The concept was developed by a five-person team from **Hebel-Gymnasium Schwetzingen** (Team ID: 58130).
 
-**Backend:** Express 4 + better-sqlite3 + Gemini 2.0 Flash (server-side proxy)
-
-In development, Vite proxies `/api/*` to Express on port 3001. In production, Express serves the compiled Vite build as static files from a single process.
+This website is a **prototype**, vibecoded by me in [Google AI Studio](https://aistudio.google.com/) to visualise what CuraConnect could look like as a real product in the future. It's a tangible way to show the idea, make it clickable, and bring the business plan to life beyond a PDF.
 
 ---
 
-## Getting Started
+## How It Works
 
-### Prerequisites
+**For seniors:** You log in, describe what you need help with (by typing, or just talking to the built-in AI assistant), pick a time and location, and post your request. When a young helper applies, you see their profile and rating before deciding. Once the job is done and you confirm it, payment is released automatically.
 
-- Node.js 18+
-- A [Gemini API key](https://aistudio.google.com/app/apikey) (free tier is sufficient)
+**For students:** You browse open tasks near you, filter by category (garden, household, tech, shopping), and apply with one tap. Once you're selected and complete the job, you get paid — and earn CuraCoins, a loyalty currency redeemable for local vouchers like coffee or cinema tickets.
 
-### Installation
-
-```bash
-git clone https://github.com/antonzipperle/CuraConnect.git
-cd CuraConnect
-npm install
-```
-
-### Configuration
-
-```bash
-cp .env.example .env.local
-# Edit .env.local and set GEMINI_API_KEY=your_key_here
-```
-
-### Running locally
-
-Open two terminals:
-
-```bash
-# Terminal 1 — backend (port 3001)
-npm run dev:server
-
-# Terminal 2 — frontend (port 3000, proxies /api to backend)
-npm run dev
-```
-
-Visit `http://localhost:3000`
-
-### Demo accounts
-
-| Role    | Email           | Password |
-|---------|-----------------|----------|
-| Senior  | maria@test.de   | password |
-| Student | lukas@test.de   | password |
+**Trust and safety** are built in throughout: ratings after every job, an escrow-style payment system so money is only released on confirmation, and CuraCare — a basic insurance layer active on every booking.
 
 ---
 
-## Deployment on Render
+## What's in the App
 
-**Web Service (full-stack — recommended):**
-
-| Field | Value |
-|-------|-------|
-| Build Command | `npm install && npm run build` |
-| Start Command | `npm run start` |
-| Environment Variable | `GEMINI_API_KEY=your_key` |
-
-**Static Site (frontend only, no AI):**
-
-| Field | Value |
-|-------|-------|
-| Build Command | `npm run build` |
-| Publish Directory | `dist` |
+- Landing page and full registration / login flow with role selection (senior or helper)
+- Senior dashboard for posting tasks, managing applicants, and tracking payments
+- AI assistant that lets seniors describe a task by voice or text — it fills out the form for them
+- Student dashboard with a filterable job feed, active job tracker, and earnings history
+- Wallet with CuraCoin balance, reward redemption, and transaction history
+- User profiles with ratings, reviews, and editable bios
+- Payment overview with escrow status per job
 
 ---
 
-## Job Lifecycle
+## Business Model
 
-```
-Senior creates job
-    → Students apply
-    → Senior selects helper
-    → Helper completes task
-    → Senior confirms + rates
-    → CuraCoins awarded to helper
-```
+CuraConnect takes a **10% fee** on each completed job. On top of that, seniors can subscribe to **Cura+** (€60/year) for priority matching and no ads, and local businesses can place ads in the app. Based on projected year-3 numbers, the platform is designed to be self-sustaining at moderate scale.
 
-## AI Pipeline
+---
 
-```
-User input (text / voice / image)
-    ↓
-POST /api/ai/chat  or  /api/ai/image
-    ↓
-Express server  [GEMINI_API_KEY stays here]
-    ↓
-Gemini 2.0 Flash
-    ↓
-Structured JSON  →  form auto-filled
-```
+## Team
+
+**Anton Zipperle · Lena Goschmann · Teresa Schulz · Atakan Tink · Nicolas Stefanski**  
+Hebel-Gymnasium Schwetzingen — Jugend Gründet 2026
+
+View the app in Render: https://curaconnect-dma9.onrender.com
 
 ---
 
