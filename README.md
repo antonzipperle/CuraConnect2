@@ -1,7 +1,7 @@
 <div align="center">
     
-![CuraConnect Logo](https://github.com/antonzipperle/CuraConnect/blob/main/CuraConnectHZ.png)
-
+![CuraConnect Logo](https://github.com/antonzipperle/CuraConnect/blob/main/CuraConnectHZ.png "Title" {width=40px height=400px})  
+    
 **A platform connecting seniors with young helpers for everyday tasks**
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
